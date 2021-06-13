@@ -1,0 +1,10 @@
+.env
+node_modules/
+dist
+
+#Visual Studio Code
+.vscode/*
+!.vscode/setting.json
+!.vscode/task.json
+!.vscode/launch.json
+!.vscode/extensions.json

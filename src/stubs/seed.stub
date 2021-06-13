@@ -1,0 +1,22 @@
+/**
+* Deleting exsting entries and seed values for 'table_name
+*
+* @param {Object} knex
+* @return {Promise}
+*/
+export function seed(knex){
+    return knex.('table_name')
+    .del()
+    .then(()=>{
+        return knex('table_name').insert([
+            {
+                colName: 'rowValue',
+                colName2: 'rowValue',
+            },
+             {
+                colName: 'rowValue',
+                colName2: 'rowValue',
+            },
+        ])
+    })
+}
