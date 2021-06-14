@@ -1,11 +1,12 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
+
 //Default configuration for database connection
 let connection = {
   port: process.env.DB_PORT,
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  databse: process.env.DB_NAME,
+  database: process.env.DB_NAME,
   charset: 'utf8',
   timezone: 'UTC',
 };
@@ -29,7 +30,7 @@ module.exports = {
   connection,
   client: process.env.DB_CLIENT,
   migrations: {
-    tablename: 'migrations',
+    tableName: 'migrations',
     directory: './migrations',
     stub: './stubs/migration.stub',
   },

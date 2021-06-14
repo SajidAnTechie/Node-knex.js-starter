@@ -1,5 +1,5 @@
 /**
- * Custom error generator
+ * Custom error generator.
  *
  * @param {Integer} code
  * @param {String} message

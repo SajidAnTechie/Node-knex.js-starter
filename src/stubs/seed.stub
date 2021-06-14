@@ -5,7 +5,7 @@
 * @return {Promise}
 */
 export function seed(knex){
-    return knex.('table_name')
+    return knex('table_name')
     .del()
     .then(()=>{
         return knex('table_name').insert([

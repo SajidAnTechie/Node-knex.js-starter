@@ -8,8 +8,9 @@
     "build": "rimraf dist && babel src --copy-files --out-dir dist --source-maps",
     "start:dev": "nodemon --watch .env --watch src --exec babel-node src --source-maps",
     "prettier": "prettier --write .",
-    "seed":"yarn run seed:run --knexfile src/knexfile.js",
-    "migrate":"yarn run migrate:latest --knexfile src/knexfile.js",
+    "knex":"babel-node node_modules/knex/bin/cli.js",
+    "seed":"yarn knex seed:run --knexfile src/knexfile.js",
+    "migrate":"yarn knex migrate:latest --knexfile src/knexfile.js",
     "rollback":"yarn knex migrate:rollback --knexfile src/knexfile.js",
     "make:seeder":"yarn knex seed:make --knexfile src/knexfile.js",
     "make:migration":"yarn knex migrate:make --knexfile src/knexfile.js"

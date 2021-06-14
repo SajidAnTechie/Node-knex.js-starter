@@ -2,7 +2,8 @@ import HttpStatus from 'http-status-codes';
 import buildError from '../utils/buildError';
 
 /**
- *  Error responce middleware for 404 not found
+ *  Error responce middleware for 404 not found.
+ *
  * @param {Object} req
  * @param {Object} res
  */
@@ -17,6 +18,7 @@ export function notFound(req, res) {
 
 /**
  * Method not allowed middleware.
+ *
  * @param {Object} req
  * @param {Object} res
  */

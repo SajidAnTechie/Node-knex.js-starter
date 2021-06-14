@@ -7,10 +7,10 @@
 export function up(knex){
     return knex.schema.createTable('table_name',table=>{
         table.increments();
-        table.timestamps('created_at')
+        table.timestamp('created_at')
             .notNull()
             .defaultTo(knex.raw('now()'));
-        table.timestamps('updated_at')
+        table.timestamp('updated_at')
             .notNull()
             .defaultTo(knex.raw('now()'));
     })
@@ -22,6 +22,6 @@ export function up(knex){
 * @param {Object} knex
 * @return {Promise}
 */
-export function up(knex){
+export function down(knex){
     return knex.schema.dropTable('table_name')
 }
