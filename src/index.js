@@ -1,6 +1,7 @@
 import './db';
 import express from 'express';
 import * as errorHandler from './middlerwares/errorHandler';
+import { privateRouter, publicRouter } from './routes';
 
 import dotenv from 'dotenv';
 
@@ -16,6 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.locals.title = process.env.APP_TITLE;
 app.locals.version = process.env.APP_VERSION;
+
+app.use('/api', publicRouter);
+app.use('/api', privateRouter);
 
 app.use(errorHandler.genericErrorHandler);
 app.use(errorHandler.methodNotAllowed);
