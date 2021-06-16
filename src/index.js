@@ -12,6 +12,7 @@ app.set('port', process.env.APP_PORT);
 app.set('host', process.env.APP_HOST);
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.locals.title = process.env.APP_TITLE;
 app.locals.version = process.env.APP_VERSION;

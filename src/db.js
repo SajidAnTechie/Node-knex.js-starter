@@ -21,13 +21,13 @@ const additonalConfig = {
     }
     return origImpl(toSnakeCase(value));
   },
-  postProcessResponse: (result, queryContext) => {
+  postProcessResponse: (result) => {
     if (Array.isArray(result)) {
       if (result.length === 0 || !result[0] || typeof result[0] != 'object') {
         return result;
+      } else {
+        return camelcaseKeys(result, { deep: true });
       }
-    } else {
-      return camelcaseKeys(result, { deep: true });
     }
   },
 };
