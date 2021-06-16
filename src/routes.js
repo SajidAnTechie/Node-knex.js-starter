@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import userRouter from './routes/user';
-import authenticateRequest from './auth/auth';
+import authenticateRequest from './auth';
 
 const publicRouter = Router();
 const privateRouter = Router();
