@@ -1,4 +1,4 @@
-import { USER } from '../constants/tableConstant';
+import { USERS } from '../constants/tableConstant';
 
 /**
  * Deleting exsting entries and seed values for 'table_name
@@ -7,10 +7,10 @@ import { USER } from '../constants/tableConstant';
  * @return {Promise}
  */
 export function seed(knex) {
-  return knex(USER)
+  return knex(USERS)
     .del()
     .then(() => {
-      return knex(USER).insert([
+      return knex(USERS).insert([
         {
           first_name: 'Sajid',
           last_name: 'Ansari',

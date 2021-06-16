@@ -1,13 +1,13 @@
-import { USER } from '../constants/tableConstant';
+import { USERS } from '../constants/tableConstant';
 
 /**
- * Create table 'user'.
+ * Create table 'users'
  *
  * @param {Object} knex
  * @return {Promise}
  */
 export function up(knex) {
-  return knex.schema.createTable(USER, (table) => {
+  return knex.schema.createTable(USERS, (table) => {
     table.increments();
     table.string('first_name').notNullable();
     table.string('middle_name').nullable();
@@ -26,11 +26,11 @@ export function up(knex) {
 }
 
 /**
- * Drop a table.
+ * Drop a table
  *
  * @param {Object} knex
  * @return {Promise}
  */
 export function down(knex) {
-  return knex.schema.dropTable(USER);
+  return knex.schema.dropTable(USERS);
 }

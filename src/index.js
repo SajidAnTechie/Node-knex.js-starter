@@ -11,6 +11,8 @@ dotenv.config({ path: __dirname + '/../.env' });
 app.set('port', process.env.APP_PORT);
 app.set('host', process.env.APP_HOST);
 
+app.use(express.json());
+
 app.locals.title = process.env.APP_TITLE;
 app.locals.version = process.env.APP_VERSION;
 
@@ -23,7 +25,7 @@ const server = app.listen(app.get('port'), () =>
 
 //Handle unhandle promise rejection
 process.on('unhandledRejection', (err, promise) => {
-  console.log(`Error: ${err.message}`.red.bold);
+  console.log(`Error: ${err.message}`);
   //close the server
   server.close(() => process.exit(1));
 });
