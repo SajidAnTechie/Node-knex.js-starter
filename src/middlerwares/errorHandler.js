@@ -34,5 +34,6 @@ export function methodNotAllowed(req, res) {
 
 export function genericErrorHandler(err, req, res, next) {
   const error = buildError(err);
+  console.log(err);
   res.status(error.code).send({ ...error });
 }

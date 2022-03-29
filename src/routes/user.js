@@ -1,9 +1,8 @@
 import { Router } from 'express';
+import * as userController from '../controllers/user';
 
 const router = Router();
 
-router.get('/', (req, res) => {
-  res.send({ message: 'This is public route' });
-});
+router.get('/', userController.find);
 
 export default router;
