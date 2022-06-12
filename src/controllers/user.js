@@ -5,7 +5,6 @@ export const find = async (req, res, next) => {
   try {
     const data = await userServices.find();
 
-    console.log(data);
     res.status(HttpStatus.OK).json({ data });
   } catch (err) {
     next(err);
