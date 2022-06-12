@@ -19,9 +19,6 @@ export function seed(knex) {
           designation: 'ASE',
           emp_id: 512,
           phone_number: 9817253327,
-          role: 'admin',
-          isHr: true,
-          isAdmin: true,
         },
         {
           first_name: 'Shaym',
@@ -32,9 +29,6 @@ export function seed(knex) {
           designation: 'SE',
           emp_id: 555,
           phone_number: 987157897,
-          role: 'user',
-          isHr: true,
-          isAdmin: false,
         },
       ]);
     });
