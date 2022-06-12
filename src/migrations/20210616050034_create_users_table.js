@@ -17,9 +17,6 @@ export function up(knex) {
     table.string('designation').notNullable();
     table.integer('emp_id').notNullable();
     table.bigInteger('phone_number').notNullable();
-    table.enu('role', ['user', 'admin', 'hr']).notNullable();
-    table.boolean('isHr').notNullable().defaultTo(false);
-    table.boolean('isAdmin').notNullable().defaultTo(false);
     table.timestamp('created_at').notNull().defaultTo(knex.raw('now()'));
     table.timestamp('updated_at').notNull().defaultTo(knex.raw('now()'));
   });

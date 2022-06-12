@@ -2,7 +2,7 @@ import HttpStatus from 'http-status-codes';
 import buildError from '../utils/buildError';
 
 /**
- *  Error responce middleware for 404 not found.
+ *  Error response middleware for 404 not found.
  *
  * @param {Object} req
  * @param {Object} res
