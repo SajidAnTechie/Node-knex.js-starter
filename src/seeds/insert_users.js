@@ -15,7 +15,7 @@ export function seed(knex) {
           first_name: 'Sajid',
           last_name: 'Ansari',
           email: 'sajidansari33272@gmail.com',
-          address: 'Kalaiya,Bara',
+          address: 'Kalaiya, Bara',
           designation: 'ASE',
           emp_id: 512,
           phone_number: 9817253327,
