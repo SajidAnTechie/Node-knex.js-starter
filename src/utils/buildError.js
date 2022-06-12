@@ -1,5 +1,15 @@
+import TokenError from '../errors/token';
 import HttpStatus from 'http-status-codes';
+import ValidationError from '../errors/validation';
+import RowNotFoundError from '../errors/rowNotFound';
+import AuthenticationError from '../errors/authentication';
 
+/**
+ * Build error response for validation errors.
+ *
+ * @param   {Error} err
+ * @returns {Object}
+ */
 function buildError(err) {
   //Validation Error
   if (err.isJoi) {
@@ -22,6 +32,44 @@ function buildError(err) {
     return {
       code: err.output.statusCode,
       message: err.output.payload.message || err.output.payload.error,
+    };
+  }
+
+  if (err instanceof TokenError || err instanceof AuthenticationError) {
+    return {
+      code: err.code || HttpStatus.UNAUTHORIZED,
+      message: err.message || HttpStatus.getStatusText(HttpStatus.UNAUTHORIZED),
+    };
+  }
+
+  if (err instanceof RowNotFoundError) {
+    return {
+      code: HttpStatus.NOT_FOUND,
+      message: err.message || HttpStatus.getStatusText(HttpStatus.NOT_FOUND),
+    };
+  }
+
+  if (err instanceof ValidationError) {
+    return {
+      id: requestID,
+      code: err.code || HttpStatus.BAD_REQUEST,
+      message: err.message || HttpStatus.getStatusText(HttpStatus.BAD_REQUEST),
+    };
+  }
+
+  if (err instanceof ForbiddenError) {
+    return {
+      id: requestID,
+      code: err.code || HttpStatus.FORBIDDEN,
+      message: err.message || HttpStatus.getStatusText(HttpStatus.FORBIDDEN),
+    };
+  }
+
+  if (err instanceof ServiceUnavailableError) {
+    return {
+      id: requestID,
+      code: err.code || HttpStatus.SERVICE_UNAVAILABLE,
+      message: err.message || HttpStatus.getStatusText(HttpStatus.SERVICE_UNAVAILABLE),
     };
   }
 

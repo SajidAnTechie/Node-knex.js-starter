@@ -1,6 +1,9 @@
 #Bild directory
 dist
 
+# Ignore artifacts:
+coverage
+
 #Logs
 logs
 

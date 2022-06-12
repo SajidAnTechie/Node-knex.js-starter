@@ -13,7 +13,11 @@
     "migrate": "yarn knex migrate:latest --knexfile src/knexfile.js",
     "rollback": "yarn knex migrate:rollback --knexfile src/knexfile.js",
     "make:seeder": "yarn knex seed:make --knexfile src/knexfile.js",
-    "make:migration": "yarn knex migrate:make --knexfile src/knexfile.js"
+    "make:migration": "yarn knex migrate:make --knexfile src/knexfile.js",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "repository": "https://github.com/SajidAnTechie/Node-knexjs-starter",
   "author": "Sajid Ansari",
@@ -24,8 +28,10 @@
     "@babel/node": "^7.14.2",
     "@babel/preset-env": "^7.14.4",
     "@babel/register": "^7.13.16",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.1",
     "nodemon": "^2.0.7",
-    "prettier": "2.3.1",
+    "prettier": "2.6.2",
     "rimraf": "^3.0.2"
   },
   "dependencies": {
