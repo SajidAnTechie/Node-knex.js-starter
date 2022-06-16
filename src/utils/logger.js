@@ -1,7 +1,7 @@
 import path from 'path';
 import { createLogger, transports, format } from 'winston';
 
-// logFormat used for console logging
+// logFormat used for console logging.
 const logFormat = format.printf((info) => {
   const formattedNamespace = info.metadata.namespace || '';
 
