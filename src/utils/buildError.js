@@ -1,5 +1,6 @@
 import TokenError from '../errors/token';
 import HttpStatus from 'http-status-codes';
+import CustomError from '../errors/customError';
 import ValidationError from '../errors/validation';
 import RowNotFoundError from '../errors/rowNotFound';
 import AuthenticationError from '../errors/authentication';
@@ -82,7 +83,7 @@ function buildError(err) {
   }
 
   //Custom error
-  if (err.statusCode) {
+  if (err instanceof CustomError) {
     return {
       code: err.statusCode,
       message: err.message,

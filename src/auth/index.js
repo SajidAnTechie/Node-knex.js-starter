@@ -1,6 +1,6 @@
 import verifyToken from '../utils/jwt';
 import HttpStatus from 'http-status-codes';
-import createError from '../errors/createError';
+import AuthenticationError from '../errors/authentication';
 
 /**
  * Authenticate user before requesting resource.
@@ -16,7 +16,7 @@ const authenticateRequest = (req, res, next) => {
   } = req;
 
   if (!(authorization && authorization.toLowerCase().startsWith('bearer')))
-    throw createError(HttpStatus.UNAUTHORIZED, HttpStatus.getStatusText(HttpStatus.UNAUTHORIZED));
+    throw new AuthenticationError(HttpStatus.getStatusText(HttpStatus.UNAUTHORIZED), HttpStatus.UNAUTHORIZED);
 
   const token = authorization && authorization.split(' ')[1];
 
