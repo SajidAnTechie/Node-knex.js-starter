@@ -1,3 +1,4 @@
+import logger from '../utils/logger';
 import HttpStatus from 'http-status-codes';
 import buildError from '../utils/buildError';
 
@@ -33,7 +34,7 @@ export function methodNotAllowed(req, res) {
 }
 
 export function genericErrorHandler(err, req, res, next) {
+  logger.error(err);
   const error = buildError(err);
-  console.log(err);
   res.status(error.code).send({ ...error });
 }

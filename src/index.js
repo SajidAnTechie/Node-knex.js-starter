@@ -4,9 +4,10 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import express from 'express';
+import logger from './utils/logger';
 import compression from 'compression';
-import * as errorHandler from './middlerwares/errorHandler';
 import { privateRouter, publicRouter } from './routes';
+import * as errorHandler from './middlerwares/errorHandler';
 
 const app = express();
 
@@ -19,8 +20,8 @@ app.use(cors());
 app.use(helmet());
 app.use(compression());
 app.use(express.json());
+app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
-app.use(morgan('tiny'));
 
 app.locals.title = process.env.APP_TITLE;
 app.locals.version = process.env.APP_VERSION;
@@ -32,12 +33,20 @@ app.use(errorHandler.genericErrorHandler);
 app.use(errorHandler.methodNotAllowed);
 
 const server = app.listen(app.get('port'), () =>
-  console.log(`Server started at http://${app.get('host')}:${app.get('port')}/api`)
+  logger.info(`Server started at http://${app.get('host')}:${app.get('port')}/api`)
 );
 
-//Handle unhandle promise rejection
+//Catch unhandled rejections
 process.on('unhandledRejection', (err, promise) => {
-  console.log(`Error: ${err.message}`);
+  logger.error(`${err.message}`);
   //close the server
+  server.close(() => process.exit(1));
+});
+
+// Catch uncaught exceptions
+process.on('uncaughtException', (err) => {
+  logger.error('Uncaught exception');
+  logger.error(err.stack);
+
   server.close(() => process.exit(1));
 });

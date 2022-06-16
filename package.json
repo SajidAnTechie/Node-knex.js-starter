@@ -49,6 +49,7 @@
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
     "pg": "^8.6.0",
-    "to-snake-case": "^1.0.0"
+    "to-snake-case": "^1.0.0",
+    "winston": "^3.7.2"
   }
 }

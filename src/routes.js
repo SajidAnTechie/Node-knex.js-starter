@@ -3,22 +3,22 @@ import userRouter from './routes/user';
 import authenticateRequest from './auth';
 
 const publicRouter = Router();
-const privateRouter = Router();
-
 /**
  * Public routes
  *
  */
+publicRouter.get('/info', (req, res) => {
+  res.send({ message: 'This is public route' });
+});
+
 publicRouter.use('/users', userRouter);
 
 /**
  * Private routes
  *
  */
-privateRouter.use(authenticateRequest);
+const privateRouter = Router();
 
-privateRouter.use('/', (req, res) => {
-  res.send({ message: 'This is private route' });
-});
+privateRouter.use(authenticateRequest);
 
 export { publicRouter, privateRouter };

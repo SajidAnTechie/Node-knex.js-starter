@@ -1,9 +1,11 @@
 import TokenError from '../errors/token';
 import HttpStatus from 'http-status-codes';
 import CustomError from '../errors/customError';
+import ForbiddenError from '../errors/forbidden';
 import ValidationError from '../errors/validation';
 import RowNotFoundError from '../errors/rowNotFound';
 import AuthenticationError from '../errors/authentication';
+import ServiceUnavailableError from '../errors/serviceUnavailable';
 
 /**
  * Build error response for validation errors.
