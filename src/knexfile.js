@@ -8,7 +8,7 @@ let connection = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   charset: 'utf8',
-  timezone: 'UTC',
+  timezone: 'local',
 };
 
 //For test envrionment

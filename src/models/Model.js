@@ -25,7 +25,7 @@ export function fetchAll(model, trx) {
  * @returns {Promise}
  */
 export function fetchBy(model, whereClause, trx) {
-  return db.connection(trx).where(whereClause).select();
+  return db.connection(trx)(model).where(whereClause).select();
 }
 
 /**
@@ -48,8 +48,8 @@ export function create(model, data, trx) {
  * @param {Knex} trx
  * @returns {Promise<Object>}
  */
-export function update(model, data, trx) {
-  return db.update(model, data, trx);
+export function update(model, data, whereClause, trx) {
+  return db.update(model, data, whereClause, trx);
 }
 
 /**
