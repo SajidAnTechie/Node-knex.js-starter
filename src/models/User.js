@@ -1,16 +1,9 @@
 import BaseModel from './Model';
+import * as db from '../utils/db';
 import { USERS } from '../constants/tableConstant';
 
-/**
- * Model class for users.
- *
- */
-class User extends BaseModel.use({
-  name: USERS,
-}) {
-  constructor(payload) {
-    super(payload);
-  }
-}
+export function fetch(filter = {}, trx) {
+  const query = db.connection(trx)(`${USERS} as user`).select().where(filter);
 
-export default User;
+  return query;
+}

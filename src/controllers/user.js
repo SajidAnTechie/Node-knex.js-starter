@@ -10,7 +10,7 @@ import * as userServices from '../services/user';
  */
 export const find = async (req, res, next) => {
   try {
-    const data = await userServices.find();
+    const data = await userServices.find(req.query);
 
     res.status(HttpStatus.OK).json({ data });
   } catch (err) {
