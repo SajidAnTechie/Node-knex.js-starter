@@ -10,3 +10,12 @@ export const userCreateSchema = Joi.object().keys({
   empId: Joi.number().required(),
   phoneNumber: Joi.number().required(),
 });
+
+export const userQueryParamsSchema = Joi.object().keys({
+  q: Joi.string().optional(),
+  empId: Joi.string().optional(),
+  email: Joi.email().optional(),
+  bloodGroup: Joi.string().optional(),
+  page: Joi.number().optional(),
+  size: Joi.number().optional(),
+});
