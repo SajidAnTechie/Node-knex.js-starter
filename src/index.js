@@ -11,7 +11,7 @@ import * as errorHandler from './middlerwares/errorHandler';
 
 const app = express();
 
-dotenv.config({ path: __dirname + '/../.env' });
+dotenv.config();
 
 app.set('port', process.env.APP_PORT);
 app.set('host', process.env.APP_HOST);

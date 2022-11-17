@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import HttpStatus from 'http-status-codes';
 import CustomError from '../errors/customError';
+import logger from './logger';
 
 /**
  * Verify jwt token.
@@ -11,9 +12,12 @@ import CustomError from '../errors/customError';
  */
 const verifyToken = (token, secret) => {
   try {
-    return jwt.verify(token, secret);
+    const decoded = jwt.verify(token, secret);
+
+    return decoded;
   } catch (error) {
-    if (error) throw new CustomError(HttpStatus.getStatusText(HttpStatus.UNAUTHORIZED), HttpStatus.UNAUTHORIZED);
+    logger.error(error);
+    throw new CustomError(HttpStatus.getStatusText(HttpStatus.UNAUTHORIZED), HttpStatus.UNAUTHORIZED);
   }
 };
 
